@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>וזאת החוקה - בני עקיבא התרצ"ד (1934)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=David+Libre:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ba: {
+                            blue: '#1b3b6f',
+                            lightblue: '#219ebc',
+                            gold: '#d4af37',
+                            darkgold: '#b8860b',
+                            bg: '#fbf9f4',
+                            paper: '#f3eee3',
+                            accent: '#c0392b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Assistant', 'sans-serif'],
+                        serif: ['David Libre', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fbf9f4;
+            color: #2c3e50;
+        }
+        .vintage-border {
+            border: 3px double #b8860b;
+        }
+        .vintage-shadow {
+            box-shadow: 0 4px 20px -2px rgba(27, 59, 111, 0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1b3b6f;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen flex flex-col bg-ba-bg text-slate-800 selection:bg-ba-gold selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-ba-blue text-white text-xs sm:text-sm py-2 px-4 text-center border-b border-ba-gold/30 flex justify-between items-center">
+        <div class="flex items-center space-x-2 space-x-reverse mx-auto sm:mx-0">
+            <span class="bg-ba-gold text-ba-blue px-2 py-0.5 rounded font-bold text-xs">מסמך היסטורי</span>
+            <span>ארגון בני-עקיבא בא"י • ירושלם ת"ו • התרצ"ד (1934)</span>
+        </div>
+        <div class="hidden sm:flex items-center space-x-3 space-x-reverse text-xs text-ba-gold">
+            <span>תורה ועבודה</span>
+            <span>•</span>
+            <span>ה' עמך! - יברכך ה'!</span>
+        </div>
+    </div>
+
+    <!-- Header & Hero -->
+    <header class="bg-gradient-to-b from-slate-900 to-ba-blue text-white py-8 px-4 sm:px-8 shadow-xl relative overflow-hidden">
+        <div class="absolute -right-10 -top-10 opacity-10 pointer-events-none">
+            <svg width="300" height="300" viewBox="0 0 100 100" fill="currentColor">
+                <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M30 30 L70 70 M70 30 L30 70"/>
+            </svg>
+        </div>
+        
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+            <div class="flex items-center gap-5 text-right">
+                <!-- Emblem Badge -->
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-ba-paper border-4 border-ba-gold flex flex-col items-center justify-center text-ba-blue p-2 shadow-lg shrink-0 vintage-border">
+                    <div class="text-[10px] font-bold tracking-tighter">ב"ע</div>
+                    <i data-lucide="scroll" class="w-8 h-8 my-0.5 text-ba-darkgold"></i>
+                    <div class="text-[9px] font-serif font-bold">תרצ"ד</div>
+                </div>
+                <div>
+                    <div class="text-ba-gold text-sm font-semibold tracking-wider uppercase mb-1">הוצאת ההנהלה הארצית</div>
+                    <h1 class="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-ba-paper">וְזֹאת הַחֻקָּה</h1>
+                    <p class="text-slate-300 text-sm sm:text-base mt-1 max-w-xl">
+                        חקת הארגון, פרוט פעולות, שירים ולקט רעיוני של תנועת בני-עקיבא בארץ ישראל
+                    </p>
+                </div>
+            </div>
+
+            <!-- Global Controls & Search Trigger -->
+            <div class="flex flex-wrap items-center gap-2 w-full md:w-auto justify-end">
+                <div class="relative flex-grow md:flex-grow-0 min-w-[220px]">
+                    <input type="text" id="globalSearchInput" placeholder="חפש בחוקה ובפעולות..." 
+                           class="w-full bg-white/10 text-white placeholder-slate-300 text-sm rounded-full py-2 pr-10 pl-4 border border-white/20 focus:outline-none focus:bg-white focus:text-slate-900 focus:placeholder-slate-400 transition">
+                    <i data-lucide="search" class="w-4 h-4 absolute right-3.5 top-2.5 text-slate-300 pointer-events-none"></i>
+                </div>
+                
+                <button onclick="toggleBookmarksModal()" class="p-2.5 bg-white/10 hover:bg-ba-gold hover:text-ba-blue text-white rounded-full transition border border-white/20 relative" title="סימניות">
+                    <i data-lucide="bookmark" class="w-5 h-5"></i>
+                    <span id="bookmarkCount" class="absolute -top-1 -right-1 bg-ba-accent text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-6xl mx-auto px-2 sm:px-6 flex overflow-x-auto no-scrollbar space-x-1 space-x-reverse text-sm font-semibold text-slate-600">
+            <button onclick="switchTab('intro')" id="tab-intro" class="nav-tab py-3.5 px-4 flex items-center gap-2 border-b-2 border-transparent hover:text-ba-blue transition whitespace-nowrap active">
+                <i data-lucide="book-open" class="w-4 h-4"></i>
+                <span>פתיחה והמנון</span>
+            </button>
+            <button onclick="switchTab('constitution')" id="tab-constitution" class="nav-tab py-3.5 px-4 flex items-center gap-2 border-b-2 border-transparent hover:text-ba-blue transition whitespace-nowrap">
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+                <span>חקת הארגון (א-קכד)</span>
+            </button>
+            <button onclick="switchTab('activities')" id="tab-activities" class="nav-tab py-3.5 px-4 flex items-center gap-2 border-b-2 border-transparent hover:text-ba-blue transition whitespace-nowrap">
+                <i data-lucide="compass" class="w-4 h-4"></i>
+                <span>פירוט פעולות</span>
+            </button>
+            <button onclick="switchTab('guide')" id="tab-guide" class="nav-tab py-3.5 px-4 flex items-center gap-2 border-b-2 border-transparent hover:text-ba-blue transition whitespace-nowrap">
+                <i data-lucide="award" class="w-4 h-4"></i>
+                <span>למדריך ולקט</span>
+            </button>
+            <button onclick="switchTab('quiz')" id="tab-quiz" class="nav-tab py-3.5 px-4 flex items-center gap-2 border-b-2 border-transparent hover:text-ba-blue transition whitespace-nowrap text-ba-darkgold">
+                <i data-lucide="help-circle" class="w-4 h-4"></i>
+                <span>חידון החוקה</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
+
+        <!-- TAB 1: INTRO & HYMN -->
+        <section id="content-intro" class="tab-content space-y-8">
+            <!-- Anthem & Poems Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Hymn: Yad Achim -->
+                <div class="bg-ba-paper p-6 sm:p-8 rounded-2xl vintage-border vintage-shadow relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-ba-darkgold tracking-wider uppercase">ב"ה • ההמנון הרשמי</span>
+                            <h2 class="font-serif text-2xl font-bold text-ba-blue mt-0.5">יַד אַחִים</h2>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=R3nh0RTdcuQ" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 hover:scale-105 transition shadow-md" title="שמע ב-YouTube">
+                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                            <span class="text-sm font-bold hidden sm:inline">שמע ביוטיוב</span>
+                        </a>
+                    </div>
+
+                    <div class="font-serif text-lg leading-relaxed text-slate-800 space-y-4 my-6 bg-white/60 p-4 rounded-xl border border-ba-gold/20">
+                        <p>
+                            יַד אַחִים לָכֶם שְׁלוּחָה הַנַּעַר הַחָבִיב<br>
+                            עַל דִּגְלֵנוּ כֻּלְּכֶם חֲנוּ מִסָּבִיב.<br>
+                            יַזְהִיר לָכֶם כּוֹכַב תּוֹרָה<br>
+                            דַּרְכְּכֶם סוּגָה בַּעֲבוֹדָה,<br>
+                            <strong class="text-ba-blue">בְּלֵב אָמִיץ וּבְעֶזְרַת הַשֵּׁם עָלֹה נַעֲלֶה</strong><br>
+                            <span class="text-ba-accent font-bold">קָדִימָה בְּנֵי עֲקִיבָא, הֵידָד, בַּמַּעֲלֶה!</span>
+                        </p>
+                        <hr class="border-ba-gold/30">
+                        <p>
+                            מוֹלֶדֶת זוֹ, אֶרֶץ אָבוֹת, אַרְצֵנוּ הַקְּדוֹשָׁה<br>
+                            מִיָּדִי אֲבִיר יַעֲקֹב לָנוּ מוֹרָשָׁה,<br>
+                            רָאשֵׁינוּ בְּעִמְקֵי תוֹרָתָהּ<br>
+                            כַּפֵּינוּ בְּרִגְבֵי אַדְמָתָהּ,<br>
+                            <strong class="text-ba-blue">בְּלֵב אָמִיץ וּבְעֶזְרַת הַשֵּׁם עָלֹה נַעֲלֶה</strong><br>
+                            <span class="text-ba-accent font-bold">קָדִימָה בְּנֵי עֲקִיבָא, הֵידָד, בַּמַּעֲלֶה!</span>
+                        </p>
+                    </div>
+                    <div class="text-xs text-slate-500 italic text-left">מאת: משה צבי נריה זצ"ל</div>
+                </div>
+
+                <!-- Poem: Maahalei Torah -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-ba-blue tracking-wider uppercase">שיר התנועה</span>
+                        <h2 class="font-serif text-2xl font-bold text-slate-800 mt-0.5 mb-4">מַאֲהֲלֵי תוֹרָה</h2>
+                        <div class="font-serif text-base leading-relaxed text-slate-700 space-y-3 bg-slate-50 p-4 rounded-xl">
+                            <p>
+                                מַאֲהֲלֵי תוֹרָה וּשְׁדֵמוֹת עָמָל<br>
+                                נָקוּמָה הַנֹּעַר נָקוּם וְנִגָּאֵל,<br>
+                                בַּתּוֹרָה נִכְבֹּשׁ, הָאָרֶץ נַחֲרֹשׁ,<br>
+                                קָדִימָה הַנֹּעַר, גּוֹאֵל הָעָם!
+                            </p>
+                            <p>
+                                יִשְׂגֶּה דּוֹר צָעִיר בַּכְּפָר וּבָעִיר,<br>
+                                יַגְבִּיר מַאֲמָץ, יִתְנַעֵר וְקָם.<br>
+                                עוֹד יִזַּל הַפֶּלֶג וְיִשְׁטֹף הַגַּל,<br>
+                                מֶרֶץ עֲלוּמִים יַרְקִיעַ אֶל-עָל.
+                            </p>
+                            <p>
+                                יֵשַׁע וּפְדוּת, טֹהַר יַלְדוּת,<br>
+                                בְּכֹחַ, בְּאֹמֶץ, - זוֹ הַתְּעוּדָה!<br>
+                                יֵלְכוּ רְבָבוֹת בְּדַרְכֵי אָבוֹת,<br>
+                                יָקִימוּ חַיֵּי תוֹרָה וַעֲבוֹדָה.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-amber-50 border-r-4 border-amber-400 text-xs text-amber-900 rounded-l">
+                        "כשם שיש חוקים לשירה, כך יש שירה בחוקים" — מרן הרב אברהם יצחק הכהן קוק שליט"א (זצ"ל)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opening Essay Text -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h3 class="font-serif text-xl font-bold text-ba-blue border-b pb-3 flex items-center gap-2">
+                    <i data-lucide="feather" class="w-5 h-5 text-ba-gold"></i>
+                    וזאת החוקה — שירת חיינו
+                </h3>
+                <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                    <p>
+                        <strong>וזאת החוקה. שירתה - שירת חיינו.</strong> עתים עליזה, עתים עצבה, לפי מנגינת המציאות. מתוך גילה ורעדה, שמחה ועצב, נוצר מה שנוצר והוקם מה שהוקם. נוצרו חיים ונחקקו חקים-חוקי חיים. מן החיים הם באים ואל החיים הם שבים ללכת.
+                    </p>
+                    <p>
+                        מרובים צרכינו, רבות התלבטויותינו, ליצירה אנו נקראים, ליצור חדש ולהוצר מחדש וגדולים הם חבלי היצירה. תנועתנו בא"י — אטיים צעדיה ויחידים חייליה. וחיים אינם משחק ויצירתם אינה נעשית ברשות רבים ומתוך המולת רבים. תא אל תא, חדר אל חדר. רשויות יחידים מצטרפות לרשות אחידה, לאני קיבוצי, לאותו האני החדש של החברה החדשה בארצנו החדשה ישנה.
+                    </p>
+                    <p>
+                        אנו חותרים לקראת הוי עצמי, מקורי, ממקור ישראל. ראשוני קויו נראים כבר בחיינו, אם כי עדיין לא קרמו עור ובשר — דרך היצירה, מרובת לבטים היא וברוכת סבל — בכבדות נקבע ההוי, בקושי משתכלל הוא והולך. אין זה ענין של ימים, לכשתמצי לומר גם לא של שנים. ברם, רוצים אנו להיות מבשריו של זה, אנו-נוער תורה ועבודה בארץ ישראל.
+                    </p>
+                    <p>
+                        גדולה האחריות כלפי עצמנו כאן וכלפי עצמנו שם. כלפי ארץ וכלפי גולה. עוקבים את צעדינו, לאורנו הולכים, מקשיבים רב קשב לכל היוצא מפינו, ואנו יודעים זאת יודעים וזהירים.
+                    </p>
+                    <p class="bg-ba-paper p-4 rounded-xl border-r-4 border-ba-blue font-serif font-medium text-slate-800">
+                        "קשה המציאות, אפורים החיים, אבל הצו העליון קול ד' בכח - מפוצץ מראשי ההרים: פעל ויצור, עלה וגאל! 'קרב אל המזבח ועשה את חטאתך ואת עולתך' — והיית אתה הכהן ואתה הקרבן... זהו סוד החיים, עומק החיים - מסירת נפש לשם חיי נפש."
+                    </p>
+                    <p>
+                        מה יש לנו ? - גרעין. גרעין בריא של נוער דתי לומד ועובד. גרעין המכיל בקרבו כחות חיוניים אמיצים. למרות מה שעבר ועובר עליו, למרות הלבטים, הסבל, הוא קיים ועומד. ולא עוד אלא שכח חיוניותו משך אליו גם את אלה שלא עמדו בשורה. נצטרף אלינו נוער רציני, בעל מגמות נעלות ומטרות קדושות ואף הוא מטה את שכמו לסבלנו ולקשי עבודתנו. זכינו ליחס של כבוד מבחוץ, כבוד והתחשבות, ובזמן האחרון גם התעניינות.
+                    </p>
+                    <p>
+                        פעולות ה"עדה" (יחידת "מנין" חברים) מכוונות כלפי פתוח הרגש הדתי והחברתי. הדגשת הקשר הפנימי מהותי של העם עם תורתו, תורת ד', של שני אלה עם הארץ, נחלת ד', וחובות קשרי שלישיה זו בהתגלמותם בחיי יום יום, בסדרי חיים קבועים ומוצקים. אנו מבליטים וחוזרים ומדגישים את יסודות יצירתנו אלה, את האחריות הגדולה שהם מטילים על החברים.
+                    </p>
+                    <p>
+                        יתגלה נא לפנינו חזון הגאולה. יזהיר לקראתנו אורו של משיח לאורו נסע ונלך, לאורו נצעד קדימה ולאורו נגביר חילים לעלות, לעלות ולעלות... ד' עמכם!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: FULL CONSTITUTION (SECTIONS 1-124) -->
+        <section id="content-constitution" class="tab-content space-y-6 hidden">
+            <!-- Filter Bar & Search -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 sm:pb-0">
+                    <span class="text-xs font-bold text-slate-400 pl-2">סינון לפי קטגוריה:</span>
+                    <button onclick="filterConstitution('all')" class="const-cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-ba-blue text-white transition active" data-cat="all">הכל (124)</button>
+                    <button onclick="filterConstitution('basics')" class="const-cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition" data-cat="basics">יסודות ואמצעים</button>
+                    <button onclick="filterConstitution('members')" class="const-cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition" data-cat="members">חברים וחובות</button>
+                    <button onclick="filterConstitution('branch')" class="const-cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition" data-cat="branch">הנהלת הסניף</button>
+                    <button onclick="filterConstitution('national')" class="const-cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition" data-cat="national">הנהלה ומועצה ארצית</button>
+                    <button onclick="filterConstitution('kibbutz')" class="const-cat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition" data-cat="kibbutz">קיבוץ ועזרה הדדית</button>
+                </div>
+                <div class="text-xs text-slate-500 font-medium">
+                    מוצגים <span id="visibleClauseCount">124</span> סעיפים
+                </div>
+            </div>
+
+            <!-- Constitution List -->
+            <div id="constitutionList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Javascript will render clauses here dynamically -->
+            </div>
+        </section>
+
+        <!-- TAB 3: DETAILED ACTIVITIES (פרוט פעולות) -->
+        <section id="content-activities" class="tab-content space-y-6 hidden">
+            <!-- Category Selector Tabs -->
+            <div class="flex border-b border-slate-200 space-x-4 space-x-reverse text-sm font-semibold">
+                <button onclick="switchActivitySubtab('ada')" id="actsub-ada" class="act-subtab pb-3 border-b-2 border-ba-blue text-ba-blue font-bold active">
+                    פעולות ב"עדה"
+                </button>
+                <button onclick="switchActivitySubtab('chavriya')" id="actsub-chavriya" class="act-subtab pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800">
+                    פעולות ב"חבריא"
+                </button>
+                <button onclick="switchActivitySubtab('snif')" id="actsub-snif" class="act-subtab pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800">
+                    פעולות בסניף
+                </button>
+            </div>
+
+            <!-- Activity Items Container -->
+            <div id="activitiesList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Javascript will populate activities -->
+            </div>
+        </section>
+
+        <!-- TAB 4: COUNSELOR GUIDE & QUOTES (למדריך ולקט) -->
+        <section id="content-guide" class="tab-content space-y-8 hidden">
+            <!-- Counselor Code -->
+            <div class="bg-gradient-to-br from-amber-50 to-ba-paper p-6 sm:p-8 rounded-2xl vintage-border vintage-shadow space-y-6">
+                <div class="border-b border-ba-gold/40 pb-4">
+                    <span class="text-xs font-bold text-ba-darkgold tracking-wider uppercase">תעודת אחריות</span>
+                    <h2 class="font-serif text-2xl font-bold text-ba-blue mt-0.5">לַמַּדְרִיךְ</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-slate-800">
+                    <div class="bg-white/80 p-5 rounded-xl border border-ba-gold/30 space-y-2">
+                        <h4 class="font-serif font-bold text-ba-blue text-lg">"אִם נָבַלְתָּ בְּהִתְנַשֵּׂא"</h4>
+                        <p class="text-sm leading-relaxed text-slate-700">
+                            אל תחשוב גדולה לעצמך בהיותך מדריך, דע שאתה ממלא תפקיד אחראי מאד ואין כאן ענין של כבוד. <em>"אם היום תהי' עבד לעם הזה"</em>.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/80 p-5 rounded-xl border border-ba-gold/30 space-y-2">
+                        <h4 class="font-serif font-bold text-ba-blue text-lg">כוונת הלב</h4>
+                        <p class="text-sm leading-relaxed text-slate-700">
+                            כל מחשבה זרה פוסלת בקדשים. אל תאמר, כי כונותיך מסורות ללב, מי רואן, ומי יודען. הוה יודע כי כל נטיה וסטיה מהדרך הישרה מכריזה על עצמה בקולי קולות, בע"כ היא מורגשת בפעולותיך.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/80 p-5 rounded-xl border border-ba-gold/30 space-y-2">
+                        <h4 class="font-serif font-bold text-ba-blue text-lg">אח בוגר ומסור</h4>
+                        <p class="text-sm leading-relaxed text-slate-700">
+                            החבר הכי פשוט אינו סובל השתררות אחרים עליו. מורים יש לו די והותר. הוא רוצה לראות בך את אחיו הגדול, ואתה צריך להיות בשבילו חבר בוגר ומסור. התעניין בפרטי חייו של החבר, הגשמיים והרוחניים.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/80 p-5 rounded-xl border border-ba-gold/30 space-y-2">
+                        <h4 class="font-serif font-bold text-ba-blue text-lg">הקשבה עמוקה</h4>
+                        <p class="text-sm leading-relaxed text-slate-700">
+                            הסתכל מן הצד לפעולות החברים. הקשב לשיחם והגיגם. אמרה קלה שנפלטה בהיסח הדעת יכולה לגלות לך הרבה מקפולי-נשמתו של החבר. האמן את אזניך לקלוט הרבה.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-ba-blue text-white rounded-xl text-center font-serif text-lg font-bold">
+                    זְכֹר: דְּבָרִים מֵתִים אֵינָם יוֹצְרִים אֲנָשִׁים חַיִּים! <br>
+                    <span class="text-ba-gold text-sm font-sans font-normal">"וַיִּפַּח בְּאַפָּיו נִשְׁמַת חַיִּים וַיְהִי הָאָדָם לְנֶפֶשׁ חַיָּה"</span>
+                </div>
+            </div>
+
+            <!-- Rav Kook Quote -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <span class="text-xs font-bold text-ba-gold uppercase">מתוך "לנבוכי הדור" / "דרך התחיה" (ירושלים תרס"ט)</span>
+                <h3 class="font-serif text-2xl font-bold text-ba-blue">הַפְּסִיכִיקָה הַלְּאֻמִּית — מרן הרב אברהם יצחק הכהן קוק זצ"ל</h3>
+                <div class="font-serif text-slate-700 text-base leading-relaxed space-y-3 bg-slate-50 p-5 rounded-xl border-r-4 border-ba-gold">
+                    <p>
+                        ... הפסיכיקה הלאומית מתחילה להכות גלים. בתחילה תקח לה את צדדיה החיצוניים מבלי לצרף לזה את נשמתה האלקית הפנימית, בתחילה תסתפק בתחית השפה, הארץ, ידיעת התולדה וגעגועים מגומגמים. אפס מאין אור אלקים בקרבם הנפש תמלא חרדה: איה אהבת ציון וחבת ירושלים, שהיתה עם כל החולשה הנפשית, כל כך לחה ורעננה בלבבות האבות, שבעי הנדודים שבגולה?
+                    </p>
+                    <p>
+                        השאלה הגדולה הבאה בזמנה, תזכיר את האומה החיה, את כל בניה בוניה, צעיריה וכל מחזיקי בדקה, לשוב אל המקור הפסיכי, מקור החזיון והנבואה הנקלטת דוקא ע"י אמצעות האמונה האדירה באלקים הבאה אחרי כל חפש מחקר והגיון...
+                    </p>
+                    <p>
+                        ובבידים מלאות אומץ ושרירים חזקים כברזל ובקומה מחוטבה ונפש מלאה עז, יגש הצעיר הישראלי העתיד אל תחית עמו וארצו ובדגל נשא ידבר בשם ארץ הקודש ובאלקי ישראל יתפאר מקרב זרם עמוק וחי!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slogans Grid -->
+            <div class="bg-ba-blue text-white p-6 sm:p-8 rounded-2xl shadow-md space-y-6">
+                <h3 class="font-serif text-2xl font-bold text-ba-gold text-center">מִסִּסְמְאוֹתֵינוּ</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="p-4 bg-white/10 rounded-xl border border-white/10">
+                        <div class="font-serif font-bold text-lg text-ba-gold mb-1">יהדות זקופה ואמיצה</div>
+                        <div class="text-xs text-slate-300">עוז רוח הבא מתוך הכרה עמוקה ומעמיקה.</div>
+                    </div>
+                    <div class="p-4 bg-white/10 rounded-xl border border-white/10">
+                        <div class="font-serif font-bold text-lg text-ba-gold mb-1">"עזות דקדושה"</div>
+                        <div class="text-xs text-slate-300">מרדנות קדושה כלפי הרחוב המתנוון בריקנותו וגילוי המאור שבתורה.</div>
+                    </div>
+                    <div class="p-4 bg-white/10 rounded-xl border border-white/10">
+                        <div class="font-serif font-bold text-lg text-ba-gold mb-1">"חולין בטהרה"</div>
+                        <div class="text-xs text-slate-300">ריח אדמה עולה מן התפילין ודף הגמרא משלים את יום העבודה.</div>
+                    </div>
+                    <div class="p-4 bg-white/10 rounded-xl border border-white/10">
+                        <div class="font-serif font-bold text-lg text-ba-gold mb-1">טהר וקדש</div>
+                        <div class="text-xs text-slate-300">טהר את חייך בעבודה וקדשם בתורה!</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: TRIVIA / QUIZ -->
+        <section id="content-quiz" class="tab-content space-y-6 hidden max-w-2xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-md text-center space-y-6">
+                <div class="w-16 h-16 bg-ba-paper border-2 border-ba-gold rounded-full flex items-center justify-center mx-auto text-ba-blue">
+                    <i data-lucide="help-circle" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h2 class="font-serif text-2xl font-bold text-ba-blue">חידון חוקת בני עקיבא (תרצ"ד)</h2>
+                    <p class="text-sm text-slate-600 mt-1">בחן את ידיעותיך בחוקים, בעקרונות ובפעילויות של החוקה המקורית!</p>
+                </div>
+
+                <div id="quizContainer" class="text-right space-y-4">
+                    <!-- Quiz question dynamically inserted here -->
+                </div>
+
+                <div id="quizResult" class="hidden p-4 rounded-xl bg-slate-100 text-center font-bold"></div>
+
+                <button id="nextQuizBtn" onclick="nextQuizQuestion()" class="w-full py-3 bg-ba-blue text-white rounded-xl font-bold hover:bg-ba-lightblue transition">
+                    שאלה הבאה
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bookmarks Drawer Modal -->
+    <div id="bookmarksModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex justify-end hidden">
+        <div class="w-full max-w-md bg-white h-full shadow-2xl p-6 flex flex-col justify-between custom-scrollbar overflow-y-auto">
+            <div>
+                <div class="flex justify-between items-center border-b pb-4 mb-4">
+                    <h3 class="font-serif text-xl font-bold text-ba-blue flex items-center gap-2">
+                        <i data-lucide="bookmark" class="w-5 h-5 text-ba-gold"></i>
+                        הסימניות שלי
+                    </h3>
+                    <button onclick="toggleBookmarksModal()" class="p-1 hover:bg-slate-100 rounded-lg">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <div id="bookmarksList" class="space-y-3">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+            <button onclick="clearAllBookmarks()" class="w-full py-2 border border-red-200 text-red-600 rounded-lg text-sm hover:bg-red-50 transition mt-4">
+                נקה את כל הסימניות
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 px-4 border-t border-slate-800 mt-12">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-right">
+            <div>
+                <div class="font-serif text-base font-bold text-ba-paper">ארגון בני-עקיבא בארץ ישראל</div>
+                <div>הוצאת ההנהלה הארצית • ירושלם ת"ו • בית הפועל המזרחי, רחוב החבשים</div>
+            </div>
+            <div class="text-slate-500">
+                מוקדש לשימור המורשת ההיסטורית של נוער תורה ועבודה בא"י
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data & Logic -->
+    <script>
+        // Data Store: Full 124 Clauses of the Constitution
+        const CONSTITUTION_CLAUSES = [
+            // יסודות והאמצעים
+            { id: 1, num: "א", category: "basics", title: "השם", text: 'ארגון "בני עקיבא".' },
+            { id: 2, num: "ב", category: "basics", title: "הסיסמא", text: "תורה ועבודה." },
+            { id: 3, num: "ג", category: "basics", title: "המטרה", text: "חנוך דור עברי נאמן ומסור לתורתו, עמו וארצו, החי על עבודתו ברוח התורה." },
+            { id: 4, num: "ד", category: "basics", title: "הברכה", text: "המברך אומר: ה' עמך! התשובה: יברכך ה'!" },
+            { id: 5, num: "ה", category: "basics", title: "השתתפות בתנועה", text: 'ארגון "בני עקיבא" הוא חלק בלתי נפרד מתנועת "תורה ועבודה" הארצית ("הפועל המזרחי").' },
+            { id: 6, num: "ו", category: "basics", title: "חינוך עצמי", text: "בני עקיבא מתחנכים חנוך עצמי, מתוך עבודה עצמית תרבותית מעשית בעזרת מדריכי הארגון." },
+            { id: 7, num: "ז", category: "basics", title: "אורח חיים", text: "בני עקיבא מתחנכים לחיים דתיים מוסריים, למשמעת המדריכים ולעזרת חברים הדדית בלמודים ובחיי מעשה." },
+            { id: 8, num: "ח", category: "basics", title: "סמל ותלבושת", text: "לארגון יש סמל ותלבשת מיוחדים." },
+            // קבלת חברים
+            { id: 9, num: "ט", category: "members", title: "גיל קבלה", text: "לארגון מתקבלים בנים ובנות (בעדות מיוחדות) מבני תשע שנים ומעלה, החיים על פי התורה." },
+            { id: 10, num: "י", category: "members", title: "חברים בוגרים", text: "מבני 18 שנה ומעלה מתקבלים רק חברים-ות המתאימים לעבודת הדרכה וארגון." },
+            { id: 11, num: "יא", category: "members", title: "ועדת ביקורת", text: 'כל חבר הנרשם עובר תחת בקורת של ועדה מיוחדת הנקראת "ועדת בקרת" עיין סעיף כ"ב.' },
+            // חובות החברים
+            { id: 12, num: "יב", category: "members", title: "השתתפות בפעולות", text: 'על כל חבר להשתתף בפעולות ה"עדה", ה"חבריא", הסניף והארגון.' },
+            { id: 13, num: "יג", category: "members", title: "קביעת עתים לתורה", text: "על כל חבר להשתתף בשעורים ללמודי קדש ולקבוע עתים לתורה." },
+            { id: 14, num: "יד", category: "members", title: "משמעת", text: "על כל חבר להכנע למשמעת המדריכים, ההנהלה והועד." },
+            { id: 15, num: "טו", category: "members", title: "קבוצת עבודה ללומדים", text: "על כל חבר לומד להשתתף בקבוצת עבודה. המסתדרת ע\"י הסניף." },
+            { id: 16, num: "טז", category: "members", title: "סקצית עבודה", text: "כל חבר עובד נמצא בסקצית עבודה של הסניף." },
+            { id: 17, num: "יז", category: "members", title: "מס חבר", text: "כל חבר משלם מס חדשי בסכום הנקבע ע\"י ההנהלה הארצית של הארגון." },
+            // הנהלת הסניף
+            { id: 18, num: "יח", category: "branch", title: "הרכב הנהלת הסניף", text: "הסניף מתנהל על ידי הנהלה בת 3-5 חברים, המתמנים ע\"י ההנהלה הארצית למשך שנה אחת." },
+            { id: 19, num: "יט", category: "branch", title: "סמכות ההנהלה", text: "ההנהלה דנה ומחליטה על כל עניני הסניף בהתאם להוראות ההנהלה הארצית." },
+            { id: 20, num: "כ", category: "branch", title: "דיווח תקופתי", text: "ההנהלה מוסרת להנהלה הארצית דו\"ח מפורט מפעולותיה אחת לשבועים." },
+            { id: 21, num: "כא", category: "branch", title: "ייצוג בוועדה כלכלית", text: "ההנהלה שולחת את ב\"כ לועדה הכלכלית של הסניף. עיין סעיף ס\"ג." },
+            { id: 22, num: "כב", category: "branch", title: "ועדת ביקורת סניפית", text: "ההנהלה ממנה שני חברים לועדת הבקרת (השלישי מתמנה ע\"י הועד)." },
+            { id: 23, num: "כג", category: "branch", title: "פיטורי חבר הנהלה", text: "במקרה של אי פעילות מצד חבר ההנהלה, מפטרת אותו ההנהלה הארצית וממנה אחר במקומו." },
+            // הצורה הארגונית של הסניף
+            { id: 24, num: "כד", category: "branch", title: "עדה וחבריא", text: 'הסניף מתחלק ל"עדות" ו"חבריות". "עדה" מרכבת 10-15 חבר, "חבריא" מרכבת מארבע "עדות".' },
+            { id: 25, num: "כה", category: "branch", title: "מדריכי עדה וחבריא", text: 'לכל "עדה" יש מדריך ולכל "חבריא" - מדריך המרכז את פעולותיהם של מדריכי העדות.' },
+            { id: 26, num: "כו", category: "branch", title: "אחריות המדריכים", text: 'מדריכי החבריות קובעים, לפי הוראות ההנהלה, את פעולות העדות ואחראים בעד חנוכם של חברי ה"חבריא" שלהם.' },
+            { id: 27, num: "כז", category: "branch", title: "דיווח מדריכים", text: "כל מדריך מוסר להנהלת הסניף דו\"ח מפורט מעבודתו אחת לשבועים." },
+            { id: 28, num: "כח", category: "branch", title: "זהות המדריכים", text: 'המדריכים צריכים להיות חברי "בני עקיבא".' },
+            { id: 29, num: "כט", category: "branch", title: "מועצה חינוכית", text: 'אחת לחדשיים מסדרת הנהלת הסניף מועצה חנוכית בהשתתפות חבר המדריכים, ההנהלה הארצית, ב"כ הפועל המזרחי, הנהלת תנועת תורה ועבודה וב"כ "אמוני בני-עקיבא".' },
+            { id: 30, num: "ל", category: "branch", title: "מפקד חברים", text: "אחת לשלשה חדשים מסדרת הנהלת הסניף מפקד חברים בטכס חגיגי." },
+            { id: 31, num: "לא", category: "branch", title: "מעבר להפועל המזרחי", text: 'חבר "בני עקיבא" שמלאו לו 18 שנה מקבל פנקס חבר של הפועל המזרחי בארץ ישראל.' },
+            { id: 32, num: "לב", category: "branch", title: "חוג בוגרים", text: 'החברים הבוגרים יוצרים אחרי כניסתם ל"הפועל המזרחי" "חוג בוגרי בני עקיבא" בסניף הפועל המזרחי.' },
+            { id: 33, num: "לג", category: "branch", title: "המשך פעילות", text: 'חבר הממשיך את פעילותו בבני עקיבא הרשות בידו לא להשתתף בחוג בוגרי בני עקיבא.' },
+            // חבר מדריכים
+            { id: 34, num: "לד", category: "branch", title: "מינוי מדריכים", text: "חבר המדריכים מתמנה ע\"י הנהלת הסניף." },
+            { id: 35, num: "לה", category: "branch", title: "ישיבות מדריכים", text: "חבר המדריכים מתאסף לכה\"פ אחת לשבועים ודן על שאלות חנוכיות. סדר היום מוצע ע\"י הנהלת הסניף המשתתפת בישיבות חבר המדריכים." },
+            { id: 36, num: "לו", category: "branch", title: "מדריך ללא עדה", text: 'מדריך שאין לו "עדה" להדרכה במשך שלשה חדשים עוזב את חבר המדריכים. הערה: הרשות בידי הנהלת הסניף לעשות יוצא מהכלל.' },
+            // הועד והועדות
+            { id: 37, num: "לז", category: "branch", title: "הרכב הועד", text: "הועד מרכב מ-5-7 חברים-ות." },
+            { id: 38, num: "לח", category: "branch", title: "בחירת הועד", text: "הועד נבחר באספה הכללית של הסניף." },
+            { id: 39, num: "לט", category: "branch", title: "הוספת חברים", text: "הרשות בידי הנהלת הסניף להוסיף חברים-ות לועד." },
+            { id: 40, num: "מ", category: "branch", title: "ישיבות הועד", text: "ישיבות הועד מתקימות אחת לשבועים." },
+            { id: 41, num: "מא", category: "branch", title: "תפקיד הועד", text: "הועד מסדר את כל הענינים הארגוניים של הסניף בהתאם לכוון הנקבע ע\"י הנהלת הסניף." },
+            { id: 42, num: "מב", category: "branch", title: "השתתפות ההנהלה", text: "חבר הנהלת הסניף משתתף בישיבות הועד ומכוון את פעולותיו." },
+            { id: 43, num: "מג", category: "branch", title: "בחירת ועדות", text: "הועד בוחר בועדות לצרכי עבודתו." },
+            { id: 44, num: "מד", category: "branch", title: "מנהל ועדה", text: "מנהל כל ועדה צריך להיות חבר הועד." },
+            { id: 45, num: "מה", category: "branch", title: "דיווח ועדות", text: "פעם בחדש מוסרים מנהלי הועדות דו\"ח מעבודתם בישיבת הועד." },
+            { id: 46, num: "מו", category: "branch", title: "פיטורי ועד", text: "במקרה שאין הועד ממלא את חובתו, הנהלת הסניף מפטרת אותו וממנה ועד זמני, הפועל עד האספה הכללית." },
+            { id: 47, num: "מז", category: "branch", title: "אספה כללית", text: "אחת לששה חדשים קורא הועד לאספה כללית." },
+            { id: 48, num: "מח", category: "branch", title: "יום האספה הכללית", text: "יום האספה הכללית הוא חג לארגון ויש לו תכנית פעולה מיוחדת." },
+            { id: 49, num: "מט", category: "branch", title: "הקדמת אספה כללית", text: "אם הועד מוצא לנחוץ, הוא קורא לאספה כללית לפני הזמן המיועד." },
+            // ועדה משפטית
+            { id: 50, num: "נ", category: "branch", title: "ועדה משפטית", text: 'הועדה המשפטית מרכבת משלשה חברים: ב"כ הנהלת הסניף, מדריך ה"עדה" של הנאשם וב"כ החברים הנבחר באספה כללית.' },
+            { id: 51, num: "נא", category: "branch", title: "תפקיד הועדה המשפטית", text: "הועדה המשפטית דנה על סכסוכים בין חברים והפרת אחד מסעיפי חקת הארגון." },
+            { id: 52, num: "נב", category: "branch", title: "ישיבות הועדה המשפטית", text: "ישיבות הועדה המשפטית מתקימות לכה\"פ אחת לשבועים." },
+            { id: 53, num: "נג", category: "branch", title: "מזכיר הועדה", text: "הועדה המשפטית ממנה מזכיר קבוע." },
+            { id: 54, num: "נד", category: "branch", title: "אוטונומיה", text: "הועדה המשפטית היא אוטונומית." },
+            { id: 55, num: "נה", category: "branch", title: "ערעור לבית הדין", text: 'הזכות לחבר לערער לפני "בית הדין" המרכב מחבר המדריכים, הנהלת הסניף וב"כ ההנהלה הארצית. הזכות הזאת נתנת ע"י החלטת הועדה המשפטית.' },
+            // סקציות עבודה
+            { id: 56, num: "נו", category: "branch", title: "סקציות עבודה", text: "בכל סניף מסתדרות סקציות מקצועיות, הכוללות את החברים העובדים למקצועותיהם." },
+            { id: 57, num: "נז", category: "branch", title: "ניהול הסקציה", text: "הסקציה מתנהלת ע\"י ועדה בת 3-5 חברים הנבחרים ע\"י חברי הסקציה." },
+            { id: 58, num: "נח", category: "branch", title: "החדרת הרעיון", text: 'הסקציה פועלת להחדרת רעיון "בני עקיבא" בין העובדים במקצועם.' },
+            { id: 59, num: "נט", category: "branch", title: "פיתוח ידיעות", text: "הסקציה מפתחת את ידיעות המקצוע בין חבריה." },
+            { id: 60, num: "ס", category: "branch", title: "ייצוג בועדה הכלכלית", text: "ועדת הסקציה שולחת ב\"כ לועדה הכלכלית של הסניף." },
+            { id: 61, num: "סא", category: "branch", title: "זמן בחירות", text: "על זמן בחירת ועדת הסקציה מחליטה הנהלת הסניף." },
+            { id: 62, num: "סב", category: "branch", title: "בחירות חדשות", text: "במקרה ששני שלישים מחברי הסקציה דורשים בחירת ועדה חדשה, קובעת הנהלת הסניף בחירות חדשות ואפילו בתוך הזמן שנקבע על ידה מתחלה." },
+            // ועדה כלכלית
+            { id: 63, num: "סג", category: "branch", title: "הרכב הועדה הכלכלית", text: "ב\"כ הסקציות וב\"כ הנהלת הסניף מהוים את הועדה הכלכלית של הסניף." },
+            { id: 64, num: "סד", category: "branch", title: "סידור בעבודה", text: "הועדה הכלכלית דואגת לסדורם של החברים בעבודה." },
+            { id: 65, num: "סה", category: "branch", title: "הגנה מנצול", text: "הועדה הכלכלית מגינה, עד כמה שיש באפשרותה. נגד נצול." },
+            { id: 66, num: "סו", category: "branch", title: "חדירה למקצוע", text: "הועדה הכלכלית עוזרת לחברים בחדירתם למקצוע ובסדור קואופרטיבים מחברים בעלי המקצוע." },
+            { id: 67, num: "סז", category: "branch", title: "שמירה מוסרית", text: "הועדה הכלכלית שומרת על הניבו המוסרי של החברים בעבודה, ושלא ינצלו את זולתם." },
+            { id: 68, num: "סח", category: "branch", title: "ייצוג בהפועל המזרחי", text: "ב\"כ הועדה הכלכלית משתתף בישיבות ועדת העבודה של הפועל המזרחי." },
+            { id: 69, num: "סט", category: "branch", title: "קבוצי הכשרה", text: "הועדה הכלכלית יוצרת קבוצי הכשרה לשם הכשרתם של החברים לחיי קבוץ." },
+            { id: 70, num: "ע", category: "branch", title: "ועדות משנה", text: "הרשות בידי הועדה הכלכלית לסדר מזכירות או ועדות משנה שונות לפי ראות עיניה." },
+            { id: 71, num: "עא", category: "branch", title: "ארגון סקציות חדשות", text: "הועדה הכלכלית מארגנת סקציות חדשות (מאלו שאינן מאורגנות)." },
+            { id: 72, num: "עב", category: "branch", title: "שעורים מקצועיים", text: "על הועדה הכלכלית לסדר שעורים מקצועיים." },
+            { id: 73, num: "עג", category: "branch", title: "השתתפות בישיבות מדריכים", text: "ב\"כ הועדה הכלכלית משתתף בישיבות חבר המדריכים, כדי להשפיע מרוח העבודה המעשית על פעולות ההדרכה." },
+            // הנהלה ארצית
+            { id: 74, num: "עד", category: "national", title: "הנהלה ארצית", text: "הארגון הארצי מתנהל ע\"י הנהלה בת 3-5 חברים." },
+            { id: 75, num: "עה", category: "national", title: "בחירת ההנהלה", text: "ההנהלה נבחרת ע\"י הועידה הכללית של הארגון. הערה: עד שתתקיים ועידה תבחר ההנהלה ע\"י ב\"כ הסניפים." },
+            { id: 76, num: "עו", category: "national", title: "ניהול הסניפים", text: 'ההנהלה הארצית מנהלת את כל סניפי "בני עקיבא" בא"י באפן ישר ע"י באי-כחה.' },
+            { id: 77, num: "עז", category: "national", title: "אינסטנציה עליונה", text: "ההנהלה הארצית היא האינסטנציה הקבועה העליונה של הארגון, הן כלפי פנים והן כלפי חוץ." },
+            { id: 78, num: "עח", category: "national", title: "מוסדות מרכזיים", text: "הרשות בידי ההנהלה להקים מוסדות מרכזיים בארגון לפי ראות עיניה." },
+            { id: 79, num: "עט", category: "national", title: "בקרת על ההנהלה", text: "בקרת על פעולותיה של ההנהלה הארצית מותרת רק באספות המיוחדות, הנקבעות לכך ע\"י ההנהלה, בישיבות המועצה הארצית, במכתבים להנהלה ובעתונות של הארגון או של תנועת תורה ועבודה." },
+            // מועצה ארצית
+            { id: 80, num: "פ", category: "national", title: "מועצה ארצית", text: "לעזרת ההנהלה הארצית קימת מועצה ארצית, הנבחרת גם היא ע\"י הועידה." },
+            { id: 81, num: "פא", category: "national", title: "מספר חברי המועצה", text: "המועצה מרכבת מ-9-11 חבר." },
+            { id: 82, num: "פב", category: "national", title: "מנהל המועצה", text: "המועצה בוחרת במנהל או בהנהלת המועצה והם קוראים לישיבות לפי הצורך." },
+            { id: 83, num: "פג", category: "national", title: "הגבלת מנהל המועצה", text: "מנהל המועצה אינו יכול להיות חבר בהנהלה הארצית." },
+            { id: 84, num: "פד", category: "national", title: "קשר עם ההנהלה", text: "מנהל המועצה עומד בקונטקט תמידי עם ההנהלה הארצית." },
+            { id: 85, num: "פה", category: "national", title: "פעולות מיוחדות", text: "המועצה עוסקת בפעולות מיוחדות, כפי שיצוין ע\"י ההנהלה הארצית." },
+            { id: 86, num: "פו", category: "national", title: "השתתפות ההנהלה", text: "חברי ההנהלה הארצית משתתפים בישיבות המועצה." },
+            { id: 87, num: "פז", category: "national", title: "פיזור ההנהלה", text: "במקרה שההנהלה הארצית אינה פעילה, הרשות בידי המועצה לפזרה ולמנות במקומה הנהלה זמנית, הקוראת לועידה ארצית בלתי רגילה." },
+            { id: 88, num: "פח", category: "national", title: "מועצה כלכלית מרכזית", text: "ע\"י ההנהלה הארצית קימת מועצה כלכלית מרכזית בת 5-7 חברים." },
+            // כנוס (לפי המקטע המופיע)
+            { id: 109, num: "קט", category: "national", title: "השתתפות בכנוס", text: "בכנוס משתתפים כל החברים, המקבלים אשור מיוחד מהנהלת הסניף שלהם." },
+            { id: 110, num: "קי", category: "national", title: "תכנית הכנוס", text: "תכנית הכנוס מעבדת ע\"י ועדת כנוס, המתמנית ע\"י ההנהלה הארצית." },
+            // עזרה הדדית
+            { id: 111, num: "קיא", category: "kibbutz", title: "קפת עזרה הדדית", text: 'לשם פתוח הפעולה של עזרה הדדית בין החברים יוצר הארגון "קפת עזרה הדדית".' },
+            { id: 112, num: "קיב", category: "kibbutz", title: "הנהלת הקופה", text: "הקופה מתנהלת ע\"י הנהלה מיוחדת, המתמנית ע\"י ההנהלה הארצית." },
+            { id: 113, num: "קיג", category: "kibbutz", title: "מטרות הקופה", text: "הקופה תעזור לחברים ללמוד בישיבה, בבי\"ס תיכוני וגבוה ובלמוד מקצוע." },
+            { id: 114, num: "קיד", category: "kibbutz", title: "עזרה למועצה הכלכלית", text: "המועצה הכלכלית תקבל עזרה מהקופה ליצירת קבוצי הכשרה וקואופרטיבים." },
+            { id: 115, num: "קטו", category: "kibbutz", title: "מס עזרה הדדית", text: "ההנהלה הארצית קובעת מס מיוחד לעזרה הדדית." },
+            { id: 116, num: "קטז", category: "kibbutz", title: "מפעל מיוחד", text: "הרשות בידי הנהלת הקופה להכריז על מפעל מיוחד לעזרה הדדית." },
+            // קבוץ
+            { id: 117, num: "קיז", category: "kibbutz", title: "הכוון הקבוצי", text: "הכוון החנוכי של הארגון הוא קבוצי." },
+            { id: 118, num: "קיח", category: "kibbutz", title: "ועדת קבוץ", text: "ההנהלה הארצית ממנה ועדת קבוץ קבועה שמתפקידה לדאג ליצירתו ולבסוסו הכלכלי והמשקי של הקבוץ." },
+            { id: 119, num: "קיט", category: "kibbutz", title: "קבוץ בני עקיבא", text: "יש ליצור קבוץ בני עקיבא המהוה יחידה ארגונית משקית ותרבותית אחת." },
+            { id: 120, num: "קכ", category: "kibbutz", title: "נקודות חדשות", text: "הרשות בידי ההנהלה הארצית לפתוח נקודות חדשות של הקבוץ." },
+            { id: 121, num: "קכא", category: "kibbutz", title: "חקת הקבוץ", text: "חקת הקבוץ הפנימית מעבדת ע\"י חברי הקבוץ ומתאשרת ע\"י ההנהלה הארצית." },
+            { id: 122, num: "קכב", category: "kibbutz", title: "העברה לחיים קבוציים", text: "ההנהלה הארצית קובעת פעולה מתמדת כדי להעביר חברים לחיים קבוציים, ביחוד מבין המדריכים." },
+            // שנוי החקה
+            { id: 123, num: "קכג", category: "basics", title: "שנוי החקה", text: "לשנות את החקה יכולה המועצה הארצית בצרוף ההנהלה הארצית פה אחד או הועידה ברוב של שני שלישים, עפ\"י הצעת המועצה או ההנהלה." },
+            { id: 124, num: "קכד", category: "basics", title: "תקנות עזר", text: "הרשות בידי ההנהלה הארצית להוציא תקנות עזר." }
+        ];
+
+        // Data Store: Activities
+        const ACTIVITIES_DATA = {
+            ada: [
+                { id: "act-1", name: "שיחה על נושא קבוע", desc: 'כדי לברר את השאלות העיוניות של ארגוננו, מסדר מדריך ה"עדה" שיחה על נושא, שנקבע על ידו עפ"י הוראות; הוא משתדל להצטמצם בגבולות הנושא...' },
+                { id: "act-2", name: "שיחה חפשית", desc: "המדריך נותן לחברים לעורר שאלות או מעורר אותן בעצמו והם משוחחים עליהן; בשיחה כזאת יכולים לדבר על הרבה ענינים הרחוקים אחד מהשני." },
+                { id: "act-3", name: "שיחה אינטימית", desc: 'חברי ה"עדה" מספרים בנוכחות כל חברי ה"עדה" והמדריך על חייהם וחיי משפחתם. מתיעצים בעניניהם הפרטיים. התפקיד: לקרב את הלבבות.' },
+                { id: "act-4", name: "מסבה חברותית", desc: 'ה"עדה" מתאספת בביתו של אחד מחבריה, סועדים יחד את ארוחת הערב... ומבלים באפן חברותי אינטימי. תפקיד: יצירת קשרי ידידות.' },
+                { id: "act-5", name: "שירה", desc: 'המדריך מפתח את הרגש לשירה נפשית ולהתרחקות מצעקנות... להקדיש תשומת לב מיוחדת לשירים דתיים ושירי "בני עקיבא".' },
+                { id: "act-6", name: "רקוד", desc: 'רוקדים יחד רקודים מלהיבים ומעודדים (ולא רקודים סלוניים המטמטמים). רקוד לפי קצב מנגינה דתית, חסידית או רצינית.' },
+                { id: "act-7", name: "ברור מדות", desc: 'כל חבר רושם לפניו שלש פעולות טובות שעשה במשך השבוע, ופעם בשבוע מביא... חברי העדה בודקים עד כמה יש בזה מדרך התורה.' },
+                { id: "act-8", name: "פעולה טובה", desc: 'חברי ה"עדה" משתדלים לעשות בכל יום פעולה טובה בלתי רגילה. התפקיד: לפתח את הרצון ל"ועשית הישר והטוב".' },
+                { id: "act-9", name: "קריאה", desc: 'המדריך קובע ספר לקריאה משותפת. כל חברי ה"עדה" קוראים יחד (הקראה) או כל אחד קורא לחוד. מנתחים את תכן הספור.' },
+                { id: "act-10", name: "קריאה בעתונות", desc: "מחלקים את העתון למדורים שונים... כל חבר מרכז את החמר למדור הקבוע לו. להקדיש תשומת לב מיוחדת לעתונות החרדית." },
+                { id: "act-11", name: "למודים", desc: 'ה"עדה" קובעת לה למודים מיוחדים הנלמדים יחד כדי לקיים את חובת "קביעת עתים לתורה".' },
+                { id: "act-12", name: "שעורים", desc: '"עדה" מחברים לומדים מכינה את השעורים לביה"ס במועדון הסניף, כדי לאפשר את העזרה ההדדית בין החברים.' },
+                { id: "act-13", name: "תרגילי סדר", desc: 'המדריך מסדר תרגילי סדר, כדי שחברי ה"עדה" ילכו יפה בזמן טיול או תהלוכת הסניף (בהבלטת ההתנגדות לצבאיות).' },
+                { id: "act-14", name: "התעמלות", desc: "בשביל התפתחות הגופנית של החברים מסדרים פעולות התעמלות. על המדריך להדגיש שאין זה אידיאל בשבילנו." },
+                { id: "act-15", name: "משחקים", desc: "מסדרים משחקים שונים לשמור על צעירות החברים. כל משחק יהיה חי, מסודר ומכוון להחדרת רעיוננו." },
+                { id: "act-16", name: "קשוט פנה", desc: 'ה"עדה" מקשטת פנה במועדון הסניף להרגיל חברים לדאוג לסניף ולפתח חוש אסתטי.' },
+                { id: "act-17", name: "טיול", desc: 'מרבים בטיולים. מתפללים בחיק הטבע מנחה ומעריב, שרים ורוקדים.' },
+                { id: "act-18", name: "בקור", desc: "טיול לשם בקור בנקודות ישוב חדשות, מקומות היסטוריים ומוסדות בתוספת הסברה מפי המדריך." },
+                { id: "act-19", name: "טיולי תפלה", desc: "השכם בבוקר יוצאים אל מחוץ לעיר, עולים על ראש גבעה, שרים ורוקדים, מתרחצים ומתפללים בקול." },
+                { id: "act-20", name: "חיי קבוץ ליום", desc: "קמים בבקר... מתפללים, לומדים ואוכלים יחד, כל אחד הולך לעבודה/למודים וחוזר בערב לאותו מקום." },
+                { id: "act-21", name: "עבודה", desc: 'אם העדה מורכבת מלומדים, מסדרים זמן מיוחד לעבודה פיזית, לרוב יחד עם קבוצת העבודה שע"י הסניף.' },
+                { id: "act-22", name: "חליפת מכתבים", desc: 'ה"עדה" עומדת בקשר מכתבים עם עדות מסניפים אחרים בא"י ובגולה.' },
+                { id: "act-23", name: "יומן ה\"עדה\"", desc: 'ה"עדה" מנהלת "יומן" שבו רושמת את כל פעולותיה, חבורים יפים ורשמים.' }
+            ],
+            chavriya: [
+                { id: "act-24", name: "הרצאה", desc: 'מזמן לזמן טוב לסדר הרצאה על נושאים שונים. הרצאת סכום על ידי מדריך החבריא על פעולות השבועים.' },
+                { id: "act-25", name: "חגיגה", desc: 'ה"חבריא" מסדרת חגיגות עם תכנית קבועה מראש.' },
+                { id: "act-26", name: "פגישת עדות", desc: 'מזמן לזמן מסדרת ה"חבריא" פגישות חגיגיות של העדות מאותה החבריא.' }
+            ],
+            snif: [
+                { id: "act-27", name: "הדלקת נרות של שבת", desc: 'מועדון מקושט, מפה לבנה ופמוטים. חברים יושבים בחצי גורן עגולה. חברה צעירה או בכירה מדליקה ומברכת בקול.' },
+                { id: "act-28", name: "קבלת שבת", desc: 'אחרי טכס ההדלקה שרים יחד את כל מזמורי קבלת שבת, דברי תורה ותפילת מעריב.' },
+                { id: "act-29", name: "מסבת סעודה שלישית", desc: 'נטילת ידים, שירי שבת, חסידות ובני עקיבא. סיפורים על גדולי ישראל ותפילת ערבית.' },
+                { id: "act-30", name: "מסבת מלוה מלכה", desc: 'הבדלה על הכוס עם נר, שירת "המבדיל", טעימה ממגדנות, שירי מוצש"ק והרצאה.' },
+                { id: "act-31", name: "חגיגת ר\"ח", desc: 'מדורה בחצר (זכר למשואות), פרקי הלל, סיפורים על מאורעות היסטוריים מאותו חודש. סעודה משותפת.' },
+                { id: "act-32", name: "נשף חג", desc: 'במוצאי כל חג משתתפים כל החברים. הרצאה, שירה, הצגת מחזה (אסור למדריכים להשתתף).' },
+                { id: "act-33", name: "עתון קיר", desc: 'יוצא לאור כל שבוע או שבועיים. נכתב ע"י החברים. תמונות, מאמרים, ידיעות הסניף.' },
+                { id: "act-34", name: "ערב שאלות ותשובות", desc: 'קופסה לשאלות במשך השבוע. המדריך מנהל ערב שבו קוראים את השאלות והחברים עונים ודנים בהן.' },
+                { id: "act-35", name: "נשף ספרותי", desc: 'הקראת יצירות של סופר דתי שנבחר, הרצאה על הסופר, נגינה וריקודים.' },
+                { id: "act-36", name: "משפט ספרותי", desc: 'ספר נבחר מועמד למשפט עם אב בית דין (מדריך), קטיגור, סניגור ושופטים מושבעים.' },
+                { id: "act-37", name: "מקהלה", desc: 'הסניף מסדר מקהלה למטיבים לשיר בהנהלת מדריך הבקי במקצוע, להופעות בחגיגות.' },
+                { id: "act-38", name: "חוג דרמתי", desc: 'חוג מקומי למחזות בהדרכת אדם בעל טעם (לא בהכרח מדריך) מתוך התנועה.' },
+                { id: "act-39", name: "משמרת שבת", desc: 'ועדת-שבת קבועה הפועלת באפן פעיל להגנה על השבת ברוח התנועה.' },
+                { id: "act-40", name: "הקרן הקימת לישראל", desc: 'פעילות מוגברת, אוסף כספים, שיחות על הקהק"ל ותמיכה ב"יער לנדוי".' },
+                { id: "act-41", name: "קרן תורה ועבודה", desc: 'אוסף כספים לפעולות תנועת תורה ועבודה העולמית.' },
+                { id: "act-42", name: "פעולות לאומיות", desc: 'למשל, החרם על גרמניה או עזרה ליהודים סובלים, דרך ועדה מיוחדת.' },
+                { id: "act-43", name: "חדר קריאה ולמוד", desc: 'חדר מיוחד או פינה במועדון לקריאת עתונים (במיוחד חרדיים), ספרים והכנת שעורים.' },
+                { id: "act-44", name: "שעורי ערב", desc: 'למקצועות שונים ביהדות וידיעות כלליות, כולל סיוע לתלמידים מפגרים.' },
+                { id: "act-45", name: "בית ספר של ערב", desc: 'בשביל חברים שלא גמרו בי"ס עממי. פתוח גם לצעירים דתיים שאינם חברים.' },
+                { id: "act-46", name: "הרצאה פומבית", desc: 'הרצאות רעיוניות לקהל הרחב של הנוער מפי אישים מתנועתנו.' },
+                { id: "act-47", name: "מבוא-עם", desc: 'אספה פומבית גדולה לתעמולה והשפעה בנושאים העומדים על הפרק, מלווה בשירה וריקוד.' },
+                { id: "act-48", name: "חלוקת נ\"ך ומשניות", desc: 'פעם בשלושה חודשים. כל חבר מקבל ספר או מסכת ללמוד יומיומי ומתקיים טקס סיום וחלוקה חגיגי.' },
+                { id: "act-49", name: "חלוקת ש\"ס", desc: 'בארגון הארצי, פעם בשנה (ל"ג בעומר או יום הוסד הארגון). טקס חגיגי בהשתתפות רבנים, שבו מחלקים את מסכתות הש"ס ללימוד.' }
+            ]
+        };
+
+        // Quiz Data
+        const QUIZ_QUESTIONS = [
+            {
+                q: "מהי הסיסמה הרשמית של ארגון בני עקיבא לפי חקת התרצ\"ד?",
+                options: ["תורה ועבודה", "עם ישראל חי", "עלה נעלה", "תורה ויראה"],
+                answer: 0
+            },
+            {
+                q: "מהי הברכה והתשובה המקובלת בארגון?",
+                options: ["שלום עליכם - עליכם השלום", "ה' עמך! - יברכך ה'!", "חזק ואמץ - חזק ונתחזק", "שבת שלום - מבורך"],
+                answer: 1
+            },
+            {
+                q: "מאיזה גיל מתקבלים חברים לארגון בני עקיבא?",
+                options: ["מגיל 6", "מגיל 9", "מגיל 13", "מגיל 18"],
+                answer: 1
+            },
+            {
+                q: "כמה חברים מונה \"עדה\" לפי החוקה?",
+                options: ["5-8 חברים", "10-15 חברים", "20-30 חברים", "50 חברים"],
+                answer: 1
+            },
+            {
+                q: "מה אומרת הסיסמה \"חולין בטהרה\"?",
+                options: ["אוכל כשר בלבד", "ריח אדמה עולה מן התפילין ודף הגמרא משלים את יום העבודה", "טהרת הדיבור והמידות", "רחצה יומית בים"],
+                answer: 1
+            }
+        ];
+
+        // App State
+        let currentQuizIndex = 0;
+        let selectedAnswers = [];
+        let bookmarks = JSON.parse(localStorage.getItem('ba_bookmarks') || '[]');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderConstitution();
+            renderActivities('ada');
+            setupQuiz();
+            updateBookmarkBadge();
+
+            // Global search event
+            document.getElementById('globalSearchInput').addEventListener('input', (e) => {
+                const query = e.target.value.trim().toLowerCase();
+                if (query.length > 1) {
+                    performSearch(query);
+                } else {
+                    renderConstitution();
+                }
+            });
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-tab').forEach(el => {
+                el.classList.remove('border-ba-blue', 'text-ba-blue', 'active', 'font-bold');
+                el.classList.add('border-transparent');
+            });
+
+            document.getElementById(`content-${tabId}`).classList.remove('hidden');
+            const activeNav = document.getElementById(`tab-${tabId}`);
+            activeNav.classList.add('border-ba-blue', 'text-ba-blue', 'active', 'font-bold');
+            activeNav.classList.remove('border-transparent');
+        }
+
+        // Constitution Filtering & Rendering
+        function filterConstitution(cat) {
+            document.querySelectorAll('.const-cat-btn').forEach(btn => {
+                btn.classList.remove('bg-ba-blue', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            const activeBtn = document.querySelector(`.const-cat-btn[data-cat="${cat}"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
+                activeBtn.classList.add('bg-ba-blue', 'text-white');
+            }
+
+            renderConstitution(cat);
+        }
+
+        function renderConstitution(categoryFilter = 'all', searchQuery = '') {
+            const listEl = document.getElementById('constitutionList');
+            listEl.innerHTML = '';
+
+            let filtered = CONSTITUTION_CLAUSES;
+            if (categoryFilter !== 'all') {
+                filtered = filtered.filter(c => c.category === categoryFilter);
+            }
+            if (searchQuery) {
+                filtered = filtered.filter(c => 
+                    c.title.includes(searchQuery) || 
+                    c.text.includes(searchQuery) || 
+                    c.num.includes(searchQuery)
+                );
+            }
+
+            document.getElementById('visibleClauseCount').innerText = filtered.length;
+
+            filtered.forEach(item => {
+                const isBookmarked = bookmarks.includes(`clause-${item.id}`);
+                const card = document.createElement('div');
+                card.className = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-3 relative group";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between border-b pb-2 mb-2">
+                            <div class="flex items-center gap-2">
+                                <span class="w-7 h-7 bg-ba-paper border border-ba-gold text-ba-blue font-serif font-bold rounded-full flex items-center justify-center text-xs">${item.num}</span>
+                                <h4 class="font-serif font-bold text-slate-800 text-base">${item.title}</h4>
+                            </div>
+                            <button onclick="toggleBookmark('clause-${item.id}', '${item.title}')" class="text-slate-300 hover:text-ba-gold ${isBookmarked ? 'text-ba-gold' : ''}">
+                                <i data-lucide="bookmark" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${item.text}</p>
+                    </div>
+                    <div class="text-[10px] text-slate-400 font-mono text-left">סעיף ${item.num} לחוקה</div>
+                `;
+                listEl.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // Subtab for Activities
+        function switchActivitySubtab(subtabKey) {
+            document.querySelectorAll('.act-subtab').forEach(btn => {
+                btn.classList.remove('border-ba-blue', 'text-ba-blue', 'font-bold');
+                btn.classList.add('border-transparent', 'text-slate-500');
+            });
+            const activeBtn = document.getElementById(`actsub-${subtabKey}`);
+            activeBtn.classList.add('border-ba-blue', 'text-ba-blue', 'font-bold');
+            activeBtn.classList.remove('border-transparent', 'text-slate-500');
+
+            renderActivities(subtabKey);
+        }
+
+        function renderActivities(subtabKey) {
+            const container = document.getElementById('activitiesList');
+            container.innerHTML = '';
+
+            const items = ACTIVITIES_DATA[subtabKey] || [];
+            items.forEach(act => {
+                const isBookmarked = bookmarks.includes(`act-${act.id}`);
+                const el = document.createElement('div');
+                el.className = "bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-ba-gold transition flex flex-col justify-between space-y-3";
+                el.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-serif font-bold text-ba-blue text-base">${act.name}</h4>
+                            <button onclick="toggleBookmark('act-${act.id}', '${act.name}')" class="text-slate-300 hover:text-ba-gold ${isBookmarked ? 'text-ba-gold' : ''}">
+                                <i data-lucide="bookmark" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${act.desc}</p>
+                    </div>
+                `;
+                container.appendChild(el);
+            });
+            lucide.createIcons();
+        }
+
+        // Quiz Logic
+        function setupQuiz() {
+            renderQuizQuestion();
+        }
+
+        function renderQuizQuestion() {
+            const container = document.getElementById('quizContainer');
+            const q = QUIZ_QUESTIONS[currentQuizIndex];
+            
+            container.innerHTML = `
+                <div class="font-serif text-lg font-bold text-slate-800 mb-3">${currentQuizIndex + 1}. ${q.q}</div>
+                <div class="space-y-2">
+                    ${q.options.map((opt, idx) => `
+                        <button onclick="selectQuizOption(${idx})" class="quiz-opt-btn w-full text-right p-3 rounded-xl border border-slate-200 hover:bg-slate-50 text-sm transition" data-idx="${idx}">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+            document.getElementById('quizResult').classList.add('hidden');
+        }
+
+        function selectQuizOption(idx) {
+            const q = QUIZ_QUESTIONS[currentQuizIndex];
+            const btns = document.querySelectorAll('.quiz-opt-btn');
+            const resultEl = document.getElementById('quizResult');
+
+            btns.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === q.answer) {
+                    btn.classList.add('bg-emerald-100', 'border-emerald-400', 'text-emerald-900', 'font-bold');
+                } else if (i === idx) {
+                    btn.classList.add('bg-rose-100', 'border-rose-400', 'text-rose-900');
+                }
+            });
+
+            resultEl.classList.remove('hidden');
+            if (idx === q.answer) {
+                resultEl.className = "p-3 rounded-xl bg-emerald-100 text-emerald-800 text-sm font-bold text-center";
+                resultEl.innerText = "נכון מאוד! תשובה מדויקת.";
+            } else {
+                resultEl.className = "p-3 rounded-xl bg-rose-100 text-rose-800 text-sm font-bold text-center";
+                resultEl.innerText = `לא מדויק. התשובה הנכונה היא: ${q.options[q.answer]}`;
+            }
+        }
+
+        function nextQuizQuestion() {
+            currentQuizIndex = (currentQuizIndex + 1) % QUIZ_QUESTIONS.length;
+            renderQuizQuestion();
+        }
+
+        // Bookmark System
+        function toggleBookmark(key, title) {
+            if (bookmarks.includes(key)) {
+                bookmarks = bookmarks.filter(k => k !== key);
+            } else {
+                bookmarks.push(key);
+            }
+            localStorage.setItem('ba_bookmarks', JSON.stringify(bookmarks));
+            updateBookmarkBadge();
+            renderConstitution();
+        }
+
+        function updateBookmarkBadge() {
+            const badge = document.getElementById('bookmarkCount');
+            if (bookmarks.length > 0) {
+                badge.innerText = bookmarks.length;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        function toggleBookmarksModal() {
+            const modal = document.getElementById('bookmarksModal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                renderBookmarksList();
+            }
+        }
+
+        function renderBookmarksList() {
+            const list = document.getElementById('bookmarksList');
+            list.innerHTML = '';
+            if (bookmarks.length === 0) {
+                list.innerHTML = '<div class="text-sm text-slate-400 text-center py-8">אין סימניות שמורות</div>';
+                return;
+            }
+
+            bookmarks.forEach(key => {
+                const el = document.createElement('div');
+                el.className = "p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs flex justify-between items-center";
+                el.innerHTML = `
+                    <span class="font-bold text-slate-700">${key}</span>
+                    <button onclick="toggleBookmark('${key}')" class="text-red-500 hover:text-red-700">הסר</button>
+                `;
+                list.appendChild(el);
+            });
+        }
+
+        function clearAllBookmarks() {
+            bookmarks = [];
+            localStorage.removeItem('ba_bookmarks');
+            updateBookmarkBadge();
+            renderBookmarksList();
+            renderConstitution();
+        }
+
+        // Global Search
+        function performSearch(query) {
+            switchTab('constitution');
+            renderConstitution('all', query);
+        }
+    </script>
+</body>
+</html>
